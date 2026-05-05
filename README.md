@@ -1,8 +1,8 @@
 # Elite Company Digital — Landing Page v2.0
 
-> High-performance marketing landing page built for a Brazilian digital agency. Pure HTML/CSS/JS — zero frameworks, zero build steps, production-ready.
+> Landing page de alta performance para uma agência de marketing digital brasileira. HTML/CSS/JS puro — sem frameworks, sem build, pronto para produção.
 
-**[→ Live Demo](https://jovemegidio.github.io/EliteLP-II/)**
+**[→ Ver ao vivo](https://jovemegidio.github.io/EliteLP-II/)**
 
 ---
 
@@ -12,82 +12,82 @@
 
 ---
 
-## What's Inside
+## O que tem aqui
 
-A single-file landing page engineered for conversion. Every pixel serves one goal: get the visitor to WhatsApp.
+Uma landing page em arquivo único, projetada para conversão. Cada pixel serve a um objetivo: levar o visitante ao WhatsApp.
 
 ```
-index.html          ← entire page (HTML + CSS + JS, self-contained)
-uploads/            ← reference screenshots from the brand
-.nojekyll           ← GitHub Pages config
+index.html          ← página completa (HTML + CSS + JS, auto-contido)
+uploads/            ← screenshots de referência da marca
+.nojekyll           ← configuração para GitHub Pages
 ```
 
 ---
 
-## Tech Highlights
+## Destaques Técnicos
 
-| Area | Approach |
+| Área | Abordagem |
 |---|---|
-| **Layout** | CSS Grid + Flexbox, no framework |
-| **Typography** | Sora · Instrument Serif · JetBrains Mono (Google Fonts) |
-| **Animations** | Pure CSS keyframes — float, ticker, reveal on scroll |
-| **Scroll reveal** | Vanilla IntersectionObserver, no library |
-| **Logo** | Inline SVG with gradient defs — crisp at any size |
-| **Performance** | 1 HTTP request for markup · Fonts loaded async |
-| **Hosting** | GitHub Pages (static, CDN-backed) |
+| **Layout** | CSS Grid + Flexbox, sem framework |
+| **Tipografia** | Sora · Instrument Serif · JetBrains Mono (Google Fonts) |
+| **Animações** | Keyframes CSS puro — float, ticker, reveal no scroll |
+| **Scroll reveal** | IntersectionObserver vanilla, sem biblioteca |
+| **Logo** | SVG inline com gradient defs — nítido em qualquer tamanho |
+| **Performance** | 1 requisição HTTP para o markup · Fontes carregadas de forma assíncrona |
+| **Hospedagem** | GitHub Pages (estático, com CDN) |
 
 ---
 
-## Features
+## Funcionalidades
 
-- **Sticky header** with blur + transparency on scroll
-- **Animated ticker** — live social proof loop
-- **Hero brand display** — real logo mark with CSS glow and float animation
-- **Floating data cards** — ROAS, conversion rate, real-time lead notification
-- **Bento grid** — about section with magic-border hover effect
-- **Service cards** with icon + hover lift
-- **Process timeline** — numbered steps with connector lines
-- **Results / case study** section with metric cards
-- **FAQ accordion** — pure JS, smooth max-height transition
-- **CTA section** — all buttons deep-linked to WhatsApp with pre-filled message
-- **Responsive** — 3 breakpoints, mobile-first media queries
-- **Semantic HTML** — proper `<header>`, `<nav>`, `<section>`, `<footer>`, ARIA labels
+- **Header fixo** com blur + transparência no scroll
+- **Ticker animado** — loop contínuo de prova social
+- **Hero com logo real** — símbolo da marca com glow CSS e animação flutuante
+- **Cards flutuantes** — ROAS, taxa de conversão, lead em tempo real
+- **Bento grid** — seção sobre com efeito de borda mágica no hover
+- **Cards de serviço** com ícone + lift no hover
+- **Timeline de processo** — etapas numeradas com linhas conectoras
+- **Seção de resultados** com cards de métricas
+- **Accordion de FAQ** — JS puro, transição suave com max-height
+- **Seção CTA** — todos os botões com link direto para WhatsApp e mensagem pré-preenchida
+- **Responsivo** — 3 breakpoints, mobile-first
+- **HTML semântico** — `<header>`, `<nav>`, `<section>`, `<footer>` e atributos ARIA corretos
 
 ---
 
 ## Design System
 
 ```css
-/* Color tokens */
---bg-0: #03060d          /* darkest background */
---blue-500: #1f8bff      /* primary brand blue */
---cyan-400: #2cc8ff      /* accent cyan */
+/* Tokens de cor */
+--bg-0: #03060d          /* fundo mais escuro */
+--blue-500: #1f8bff      /* azul primário da marca */
+--cyan-400: #2cc8ff      /* ciano de destaque */
 --grad-blue: linear-gradient(135deg, #6ee2ff → #0a52b8)
 
-/* Type scale */
-Hero h1:  clamp(56px, 9.6vw, 152px)
-Section:  clamp(44px, 5.6vw, 78px)
-Body:     16px / 1.6
+/* Escala tipográfica */
+Hero h1:   clamp(56px, 9.6vw, 152px)
+Seções:    clamp(44px, 5.6vw, 78px)
+Corpo:     16px / 1.6
 ```
 
 ---
 
-## Running Locally
+## Como rodar localmente
 
-No build step needed:
+Nenhum passo de build necessário:
 
 ```bash
-# Clone
+# Clonar
 git clone https://github.com/jovemegidio/EliteLP-II.git
 cd EliteLP-II
 
-# Open directly in browser
+# Abrir direto no navegador
 start index.html          # Windows
 open index.html           # macOS
 xdg-open index.html       # Linux
 ```
 
-Or with any static server:
+Ou com qualquer servidor estático:
 
 ```bash
 npx serve .
@@ -96,35 +96,35 @@ npx serve .
 
 ---
 
-## Business Context
+## Contexto de Negócio
 
-Built for **Elite Company Digital**, a performance marketing agency led by Daniel Brito (São Paulo, Brasil).
+Desenvolvido para a **Elite Company Digital**, agência de marketing de performance liderada por Daniel Brito (São Paulo, Brasil).
 
-| Metric | Value |
+| Métrica | Resultado |
 |---|---|
-| Impressions generated | 13M+ |
-| Companies served | 120+ |
-| Average ROAS | 7.4× |
-| Revenue generated for clients | R$ 4M+ |
+| Impressões geradas | 13M+ |
+| Empresas atendidas | 120+ |
+| ROAS médio | 7,4× |
+| Vendas geradas para clientes | R$ 4M+ |
 
-The page implements the agency's **Elite Performance Method** positioning — strategy-first, results-focused, no vanity metrics.
+A página posiciona o **Método Elite Performance** da agência — foco em estratégia, resultados mensuráveis e crescimento real.
 
 ---
 
-## Customization
+## Personalização
 
-**WhatsApp number** — replace `5511999999999` globally with the real number (DDD + number, digits only):
+**Número do WhatsApp** — substitua `5511999999999` pelo número real (DDD + número, apenas dígitos):
 
 ```bash
 # macOS / Linux
-sed -i 's/5511999999999/YOUR_NUMBER/g' index.html
+sed -i 's/5511999999999/SEU_NUMERO/g' index.html
 
 # Windows PowerShell
-(Get-Content index.html) -replace '5511999999999','YOUR_NUMBER' | Set-Content index.html
+(Get-Content index.html) -replace '5511999999999','SEU_NUMERO' | Set-Content index.html
 ```
 
 ---
 
-## License
+## Licença
 
-Private project. All rights reserved — Elite Company Digital © 2026.
+Projeto privado. Todos os direitos reservados — Elite Company Digital © 2026.
