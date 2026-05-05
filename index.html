@@ -1061,44 +1061,16 @@
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
-  /* ============== ELITE HERO BRAND ============== */
-  .elite-hero-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
-    position: relative;
-    z-index: 2;
+  /* ============== HERO CHESS KING PHOTO ============== */
+  .hero-king-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    filter:
+      drop-shadow(0 24px 60px rgba(200,150,0,0.45))
+      drop-shadow(0 0 40px rgba(31,139,255,0.3));
     animation: kingFloat 6s ease-in-out infinite;
-  }
-  .elite-hero-mark {
-    width: 58%;
-    max-width: 200px;
-    filter: drop-shadow(0 20px 60px rgba(31,139,255,0.7)) drop-shadow(0 0 50px rgba(110,226,255,0.55));
-  }
-  .elite-hero-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-  .eht-elite {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(30px, 4.5vw, 52px);
-    font-weight: 800;
-    letter-spacing: 0.22em;
-    background: var(--grad-blue);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    line-height: 1;
-  }
-  .eht-sub {
-    font-family: var(--mono);
-    font-size: clamp(9px, 1.2vw, 13px);
-    letter-spacing: 0.32em;
-    color: var(--blue-200);
-    text-transform: uppercase;
   }
 
 </style>
@@ -1204,36 +1176,7 @@
         <div class="ring"></div>
         <div class="ring r2"></div>
         <div class="king-stage">
-          <div class="elite-hero-brand">
-            <svg class="elite-hero-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="heroMarkGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#6ee2ff"/>
-                  <stop offset="35%" stop-color="#2cc8ff"/>
-                  <stop offset="70%" stop-color="#1f8bff"/>
-                  <stop offset="100%" stop-color="#0a52b8"/>
-                </linearGradient>
-                <filter id="heroMarkGlow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="5" result="blur"/>
-                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <!-- sombra 3D -->
-              <rect x="17" y="17" width="14" height="72" rx="4" fill="#020d1f" opacity="0.4"/>
-              <rect x="17" y="17" width="72" height="14" rx="4" fill="#020d1f" opacity="0.4"/>
-              <rect x="17" y="46" width="52" height="14" rx="4" fill="#020d1f" opacity="0.4"/>
-              <rect x="17" y="75" width="72" height="14" rx="4" fill="#020d1f" opacity="0.4"/>
-              <!-- E principal -->
-              <rect x="14" y="14" width="14" height="72" rx="4" fill="url(#heroMarkGrad)" filter="url(#heroMarkGlow)"/>
-              <rect x="14" y="14" width="72" height="14" rx="4" fill="url(#heroMarkGrad)" filter="url(#heroMarkGlow)"/>
-              <rect x="14" y="43" width="52" height="14" rx="4" fill="url(#heroMarkGrad)" filter="url(#heroMarkGlow)"/>
-              <rect x="14" y="72" width="72" height="14" rx="4" fill="url(#heroMarkGrad)" filter="url(#heroMarkGlow)"/>
-            </svg>
-            <div class="elite-hero-text">
-              <span class="eht-elite">ELITE</span>
-              <span class="eht-sub">COMPANY DIGITAL</span>
-            </div>
-          </div>
+          <img class="hero-king-photo" src="uploads/chess-king-photo.jpg" alt="Rei de xadrez — estratégia é o nosso jogo"/>
         </div>
         <div class="floating-card fc-1">
           <div class="fc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M3 17l6-6 4 4 8-8M14 7h7v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -1358,7 +1301,6 @@
         <span class="bento-tag">Liderança</span>
         <h3 style="margin-top: 16px;">Daniel Brito <span class="serif-it" style="color: var(--blue-200); font-size: 0.7em;">— fundador</span></h3>
         <p>+4 anos otimizando campanhas para pequenas, médias e grandes empresas no Brasil. Reconhecido por entregar resultados onde outras agências falharam.</p>
-        <img class="bento-king-tile" src="uploads/chess-king-gold.svg" alt="" aria-hidden="true"/>
       </div>
     </div>
   </div>
