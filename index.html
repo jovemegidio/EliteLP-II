@@ -1,0 +1,1847 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elite Company Digital 2.0 — Onde estratégia vira faturamento.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg-0: #03060d;
+    --bg-1: #060d1a;
+    --bg-2: #0a1729;
+    --bg-3: #0f2138;
+    --line: rgba(120, 170, 255, 0.10);
+    --line-strong: rgba(120, 170, 255, 0.22);
+
+    --blue-50:  #e7f3ff;
+    --blue-200: #9ecbff;
+    --blue-400: #4ea5ff;
+    --blue-500: #1f8bff;
+    --blue-600: #0a6dee;
+    --blue-700: #0a52b8;
+    --cyan-300: #6ee2ff;
+    --cyan-400: #2cc8ff;
+
+    --text-0: #f5f9ff;
+    --text-1: #d8e3f3;
+    --text-2: #94a4bf;
+    --text-3: #5d6d87;
+
+    --green: #1fd180;
+    --red:   #ff4d5c;
+    --gold:  #ffb931;
+
+    --grad-blue: linear-gradient(135deg, #6ee2ff 0%, #2cc8ff 30%, #1f8bff 70%, #0a52b8 100%);
+    --grad-text: linear-gradient(180deg, #ffffff 0%, #c2d8f5 60%, #6e8bb5 100%);
+
+    --container: 1280px;
+    --serif: 'Instrument Serif', 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-0);
+    color: var(--text-1);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Sora', sans-serif;
+    color: var(--text-0);
+    margin: 0;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+  .grad-text { background: var(--grad-blue); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .ghost-text { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .serif-it { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+  /* Eyebrow */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue-200);
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(31, 139, 255, 0.06);
+    border: 1px solid rgba(31, 139, 255, 0.2);
+  }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan-400); box-shadow: 0 0 10px var(--cyan-400); }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600; font-size: 14px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 16px 26px; border-radius: 999px;
+    cursor: pointer; border: 1px solid transparent;
+    transition: all .25s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: linear-gradient(180deg, #2ea0ff, #1f8bff 50%, #0a6dee);
+    color: #fff;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 10px 30px rgba(31,139,255,0.4), 0 0 0 1px rgba(110, 226, 255, 0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 16px 40px rgba(31,139,255,0.55); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.04);
+    color: var(--text-0);
+    border-color: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(110, 226, 255, 0.4); }
+  .btn .arrow { width: 16px; height: 16px; transition: transform .25s ease; }
+  .btn:hover .arrow { transform: translate(3px, -3px); }
+
+  /* ============== TICKER (top) ============== */
+  .top-ticker {
+    background: var(--bg-1);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-2);
+    padding: 10px 0;
+    letter-spacing: 0.04em;
+  }
+  .ticker-track {
+    display: flex; gap: 56px;
+    animation: tickerMove 40s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .ticker-track span { display: inline-flex; align-items: center; gap: 10px; }
+  .ticker-track span::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--cyan-400); box-shadow: 0 0 8px var(--cyan-400);
+  }
+  .ticker-track .num { color: var(--blue-200); font-weight: 600; }
+  @keyframes tickerMove {
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============== HEADER ============== */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 18px 0;
+    background: rgba(3, 6, 13, 0.65);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: padding .3s, background .3s, border-color .3s;
+  }
+  .site-header.scrolled {
+    padding: 12px 0;
+    background: rgba(3, 6, 13, 0.9);
+    border-bottom-color: rgba(120, 170, 255, 0.12);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .logo { display: flex; align-items: center; gap: 12px; color: var(--text-0); }
+  .logo-mark {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #2cc8ff, #1f8bff 50%, #0a52b8);
+    display: grid; place-items: center;
+    box-shadow: 0 8px 24px rgba(31,139,255,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+    position: relative; overflow: hidden;
+  }
+  .logo-mark::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.6), transparent 50%);
+    opacity: .5;
+  }
+  .logo-mark svg { position: relative; z-index: 1; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-text .l1 { font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: 0.18em; }
+  .logo-text .l2 { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.32em; color: var(--blue-200); margin-top: 4px; }
+  .logo-text .v { color: var(--cyan-400); margin-left: 6px; }
+
+  .nav-links { display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+  .nav-links a {
+    font-size: 13.5px; font-weight: 500;
+    color: var(--text-2);
+    padding: 9px 16px; border-radius: 999px;
+    transition: all .2s;
+  }
+  .nav-links a:hover { color: var(--text-0); background: rgba(255,255,255,0.05); }
+  .nav-cta { display: flex; align-items: center; gap: 14px; }
+  .nav-cta .btn { padding: 12px 22px; font-size: 12px; }
+
+  @media (max-width: 980px) { .nav-links { display: none; } }
+
+  /* ============== HERO ============== */
+  .hero {
+    position: relative;
+    padding: 80px 0 100px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: -2;
+    background:
+      radial-gradient(ellipse 70% 50% at 70% 40%, rgba(31, 139, 255, 0.22), transparent 60%),
+      radial-gradient(ellipse 50% 60% at 20% 80%, rgba(10, 82, 184, 0.18), transparent 70%),
+      linear-gradient(180deg, #03060d 0%, #060d1a 50%, #03060d 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: -1;
+    background-image:
+      linear-gradient(rgba(110, 226, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 226, 255, 0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 60% at 60% 50%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 50%, #000 30%, transparent 80%);
+  }
+  .hero-checker {
+    position: absolute;
+    right: -10%; bottom: -25%;
+    width: 1100px; height: 1100px;
+    transform: perspective(1500px) rotateX(62deg) rotateZ(-18deg);
+    background-image:
+      linear-gradient(45deg, rgba(31,139,255,0.14) 25%, transparent 25%, transparent 75%, rgba(31,139,255,0.14) 75%),
+      linear-gradient(45deg, rgba(31,139,255,0.14) 25%, transparent 25%, transparent 75%, rgba(31,139,255,0.14) 75%);
+    background-position: 0 0, 70px 70px;
+    background-size: 140px 140px;
+    opacity: 0.55;
+    mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+    z-index: -1;
+  }
+  .hero-orb {
+    position: absolute; width: 700px; height: 700px;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: -1; pointer-events: none;
+    animation: float 9s ease-in-out infinite;
+  }
+  .hero-orb.o1 { top: 5%; right: -15%; background: radial-gradient(circle, rgba(31,139,255,0.45), transparent 60%); }
+  .hero-orb.o2 { bottom: -25%; left: -15%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(110,226,255,0.3), transparent 60%); animation-delay: -4.5s; }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -40px) scale(1.06); }
+  }
+
+  /* Hero layout */
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 40px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  .hero-meta .left { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+  .hero-meta .live { color: var(--cyan-300); display: inline-flex; align-items: center; gap: 8px; }
+  .hero-meta .live .ld { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan-400); box-shadow: 0 0 10px var(--cyan-400); animation: blink 1.6s infinite; }
+  @keyframes blink { 50% { opacity: .3; } }
+
+  .hero-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 56px;
+  }
+  .hero h1 {
+    font-size: clamp(56px, 9.6vw, 152px);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    margin: 0;
+  }
+  .hero h1 .row { display: block; }
+  .hero h1 .row.right { text-align: right; }
+  .hero h1 .accent {
+    background: var(--grad-blue);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero h1 .serif { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .hero h1 .outlined {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(110, 226, 255, 0.4);
+  }
+
+  .hero-body {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 56px;
+    align-items: end;
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-2);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .hero-sub strong { color: var(--text-0); font-weight: 600; }
+
+  .hero-scene {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 380px;
+  }
+  .king-stage {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(31,139,255,0.4), rgba(10,82,184,0.05) 50%, transparent 70%);
+  }
+  /* Chess board behind king */
+  .chess-board {
+    position: absolute;
+    left: 50%; top: 62%;
+    transform: translate(-50%, -50%) perspective(900px) rotateX(58deg) rotateZ(-12deg);
+    width: 92%;
+    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    border: 2px solid rgba(110, 226, 255, 0.35);
+    border-radius: 4px;
+    box-shadow:
+      0 30px 60px rgba(0,0,0,0.6),
+      0 0 60px rgba(31,139,255,0.35),
+      inset 0 0 0 1px rgba(255,255,255,0.04);
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .chess-board .sq {
+    position: relative;
+  }
+  .chess-board .sq.dark {
+    background: linear-gradient(135deg, rgba(10, 32, 64, 0.95), rgba(4, 12, 26, 0.98));
+  }
+  .chess-board .sq.light {
+    background: linear-gradient(135deg, rgba(110, 180, 255, 0.18), rgba(40, 80, 140, 0.28));
+  }
+  .chess-board::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(110, 226, 255, 0.25), transparent 60%);
+    pointer-events: none;
+  }
+  .king-stage .king-svg { position: relative; z-index: 2; }
+  .king-svg {
+    width: 65%;
+    filter: drop-shadow(0 30px 60px rgba(31,139,255,0.45));
+    animation: kingFloat 6s ease-in-out infinite;
+  }
+  @keyframes kingFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  .ring {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    border: 1px dashed rgba(110, 226, 255, 0.25);
+    animation: spin 30s linear infinite;
+  }
+  .ring.r2 { inset: -8%; border-style: dotted; opacity: 0.5; animation: spin 50s linear infinite reverse; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hero-cta-stack { display: flex; flex-direction: column; gap: 18px; align-items: stretch; max-width: 380px; margin-left: auto; }
+  .hero-cta-stack .btn { width: 100%; }
+  .btn.btn-xl {
+    padding: 24px 32px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+    font-weight: 700;
+  }
+  .btn.btn-xl .arrow { width: 20px; height: 20px; }
+
+  /* Quick floats over scene */
+  .floating-card {
+    position: absolute;
+    background: linear-gradient(160deg, rgba(15, 33, 56, 0.95), rgba(10, 23, 41, 0.95));
+    border: 1px solid rgba(110, 226, 255, 0.22);
+    border-radius: 14px;
+    padding: 12px 16px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 12px;
+    animation: cardFloat 5s ease-in-out infinite;
+    z-index: 3;
+    white-space: nowrap;
+  }
+  @keyframes cardFloat {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-8px) rotate(0.5deg); }
+  }
+  .floating-card.fc-1 { top: -6%; left: -22%; animation-delay: 0s; }
+  .floating-card.fc-2 { top: 38%; right: -28%; animation-delay: -1.5s; }
+  .floating-card.fc-3 { bottom: -2%; left: -10%; animation-delay: -3s; }
+  .fc-icon {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: linear-gradient(135deg, #2cc8ff, #1f8bff);
+    display: grid; place-items: center; flex: none;
+    box-shadow: 0 8px 16px rgba(31,139,255,0.35);
+  }
+  .fc-text { display: flex; flex-direction: column; }
+  .fc-label { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-200); }
+  .fc-value { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-0); margin-top: 2px; }
+  .fc-value.green { color: var(--green); }
+
+  @media (max-width: 1100px) {
+    .hero-body { grid-template-columns: 1fr; gap: 40px; }
+    .hero-cta-stack { margin: 0 auto; }
+    .floating-card.fc-1 { left: 0; }
+    .floating-card.fc-2 { right: 0; }
+  }
+
+  /* ============== MARQUEE LOGOS ============== */
+  .clients-band {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-1);
+    padding: 32px 0;
+    overflow: hidden;
+  }
+  .clients-track {
+    display: flex; gap: 64px;
+    animation: tickerMove 35s linear infinite;
+    width: max-content;
+    align-items: center;
+  }
+  .client-logo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--text-3);
+    letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 10px;
+    transition: color .2s;
+  }
+  .client-logo:hover { color: var(--text-1); }
+  .client-logo .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); }
+  .client-logo .it { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+  /* ============== SECTION SHELL ============== */
+  section { position: relative; }
+  .section-pad { padding: 140px 0; }
+  .section-pad-sm { padding: 90px 0; }
+
+  .section-head {
+    margin-bottom: 72px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+  .section-head .sh-left { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+  .section-head .sh-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.2em;
+  }
+  .section-head h2 {
+    font-size: clamp(44px, 5.6vw, 78px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    max-width: 780px;
+  }
+  .section-head h2 .serif { font-family: var(--serif); font-style: italic; font-weight: 400; }
+  .section-head .sh-right { color: var(--text-2); font-size: 16px; line-height: 1.7; max-width: 380px; padding-bottom: 12px; }
+
+  @media (max-width: 900px) {
+    .section-head { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* ============== STATS ============== */
+  .stats {
+    background: var(--bg-1);
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0;
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .stat { text-align: left; padding: 8px 32px; border-right: 1px solid var(--line); }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; padding-right: 0; }
+  .stat-num {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(36px, 4.4vw, 60px);
+    font-weight: 800;
+    background: var(--grad-blue);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
+  .stat-label { margin-top: 12px; color: var(--text-2); font-size: 13px; font-family: var(--mono); letter-spacing: 0.04em; text-transform: uppercase; }
+  @media (max-width: 760px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat { padding: 16px !important; border: none; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+    .stat:nth-child(2n) { border-right: none; }
+    .stat:nth-child(n+3) { border-bottom: none; }
+  }
+
+  /* ============== ABOUT (bento) ============== */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+    gap: 16px;
+  }
+  .bento-card {
+    position: relative;
+    border-radius: 24px;
+    background: linear-gradient(160deg, rgba(15, 33, 56, 0.55), rgba(10, 23, 41, 0.4));
+    border: 1px solid var(--line);
+    padding: 32px;
+    overflow: hidden;
+    transition: border-color .35s ease, transform .35s ease;
+  }
+  .bento-card.magic::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(110, 226, 255, 0.5), transparent 40%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .bento-card.magic:hover::before { opacity: 1; }
+
+  .bento-card.b-headline { grid-column: span 4; }
+  .bento-card.b-stat { grid-column: span 2; display: flex; flex-direction: column; justify-content: space-between; }
+  .bento-card.b-mini { grid-column: span 2; }
+  .bento-card.b-wide { grid-column: span 4; }
+  .bento-card.b-half { grid-column: span 3; }
+
+  .bento-card h3 {
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .bento-card p { color: var(--text-2); font-size: 14.5px; line-height: 1.7; }
+  .bento-card strong { color: var(--text-0); font-weight: 600; }
+
+  .bento-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 56px; font-weight: 800;
+    background: var(--grad-blue);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    line-height: 1; letter-spacing: -0.03em;
+  }
+  .bento-tag {
+    font-family: var(--mono);
+    font-size: 11px; color: var(--blue-200);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .b-headline-quote {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 1.15;
+    color: var(--text-0);
+    font-style: italic;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+  }
+  .b-headline-quote .grad-text { font-family: var(--serif); font-style: italic; }
+
+  .b-mini .icon-sq {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(160deg, rgba(31,139,255,0.18), rgba(10,82,184,0.05));
+    border: 1px solid rgba(110, 226, 255, 0.25);
+    display: grid; place-items: center;
+    margin-bottom: 18px;
+  }
+
+  /* Mini chess inside bento */
+  .bento-king-tile {
+    position: absolute;
+    right: -20px; bottom: -20px;
+    width: 180px; opacity: 0.7;
+    pointer-events: none;
+  }
+
+  @media (max-width: 980px) {
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .bento-card.b-headline, .bento-card.b-stat, .bento-card.b-mini, .bento-card.b-wide, .bento-card.b-half { grid-column: span 2; }
+  }
+
+  /* ============== METHOD ARC ============== */
+  .method-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(31,139,255,0.10), transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(110,226,255,0.07), transparent 50%);
+    pointer-events: none;
+  }
+  .method-display {
+    position: relative;
+    text-align: center;
+  }
+  .method-tag {
+    font-family: var(--mono); font-size: 12px; color: var(--blue-200);
+    letter-spacing: 0.32em; text-transform: uppercase;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .method-bigtitle {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: clamp(64px, 12vw, 184px);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    background: linear-gradient(180deg, #ffffff, #6e8bb5 70%, transparent 130%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .method-subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 56px);
+    background: var(--grad-blue);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-top: -12px;
+    letter-spacing: -0.01em;
+  }
+  .method-blurb {
+    color: var(--text-2);
+    font-size: 17px;
+    line-height: 1.75;
+    max-width: 660px;
+    margin: 36px auto 0;
+  }
+  .method-blurb strong { color: var(--text-0); font-weight: 600; }
+
+  .method-pill-row {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .method-pill {
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line-strong);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .method-pill .d { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan-400); }
+
+  /* ============== SERVICES — interactive list ============== */
+  .svc-list {
+    border-top: 1px solid var(--line-strong);
+  }
+  .svc-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto;
+    gap: 32px;
+    align-items: center;
+    padding: 32px 12px;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    transition: padding .35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .svc-row::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 600px 200px at var(--mx, 50%) 50%, rgba(31,139,255,0.18), transparent 60%);
+    opacity: 0;
+    transition: opacity .35s;
+    pointer-events: none;
+  }
+  .svc-row:hover { padding: 40px 24px; }
+  .svc-row:hover::before { opacity: 1; }
+  .svc-row .svc-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-3);
+    letter-spacing: 0.1em;
+  }
+  .svc-row .svc-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(22px, 2.6vw, 36px);
+    color: var(--text-0);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    transition: color .25s;
+    line-height: 1.15;
+  }
+  .svc-row:hover .svc-title { color: var(--blue-200); }
+  .svc-row .svc-title .it { font-family: var(--serif); font-style: italic; font-weight: 400; }
+  .svc-row .svc-title .grad-text { font-family: 'Sora', sans-serif; font-style: normal; }
+  .svc-row .svc-tags {
+    display: flex; gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .svc-row .svc-tags span { padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,0.03); border: 1px solid var(--line); }
+  .svc-row .svc-arrow {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line-strong);
+    display: grid; place-items: center;
+    color: var(--text-1);
+    transition: all .3s ease;
+    flex: none;
+  }
+  .svc-row:hover .svc-arrow {
+    background: var(--blue-500);
+    border-color: var(--blue-500);
+    color: white;
+    transform: rotate(-45deg);
+    box-shadow: 0 8px 24px rgba(31,139,255,0.45);
+  }
+
+  @media (max-width: 760px) {
+    .svc-row { grid-template-columns: 56px 1fr auto; gap: 16px; padding: 24px 0; }
+    .svc-row:hover { padding: 24px 0; }
+    .svc-row .svc-tags { display: none; }
+  }
+
+  /* ============== STEPS — orbital ============== */
+  .steps-frame {
+    position: relative;
+    aspect-ratio: 16/10;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .steps-frame .center-king {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    z-index: 2;
+    filter: drop-shadow(0 30px 60px rgba(31,139,255,0.5));
+  }
+  .steps-frame .orbit {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px dashed rgba(110, 226, 255, 0.18);
+    border-radius: 50%;
+  }
+  .steps-frame .orbit.o1 { width: 60%; aspect-ratio: 1; }
+  .steps-frame .orbit.o2 { width: 100%; aspect-ratio: 1; border-style: dotted; opacity: 0.5; }
+
+  .step-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(160deg, rgba(15, 33, 56, 0.95), rgba(10, 23, 41, 0.92));
+    border: 1px solid rgba(110, 226, 255, 0.28);
+    border-radius: 18px;
+    padding: 18px 22px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+    width: 280px;
+    transition: transform .3s, border-color .3s;
+  }
+  .step-node:hover { transform: translate(-50%, -50%) scale(1.03); border-color: rgba(110,226,255,0.55); }
+  .step-node .sn-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cyan-300);
+    letter-spacing: 0.18em;
+  }
+  .step-node h4 {
+    font-size: 16px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+  .step-node p {
+    font-size: 12.5px;
+    color: var(--text-2);
+    line-height: 1.55;
+  }
+  .step-node.s1 { top: 12%; left: 18%; }
+  .step-node.s2 { top: 12%; left: 82%; }
+  .step-node.s3 { top: 54%; left: 8%; }
+  .step-node.s4 { top: 54%; left: 92%; }
+  .step-node.s5 { top: 92%; left: 50%; }
+
+  @media (max-width: 980px) {
+    .steps-frame { aspect-ratio: auto; max-width: 560px; }
+    .steps-frame .orbit, .steps-frame .center-king { display: none; }
+    .step-node { position: relative; transform: none; width: auto; margin-bottom: 14px; top: auto !important; left: auto !important; }
+    .step-node:hover { transform: none; }
+  }
+
+  /* ============== COMPARE ============== */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .compare-card {
+    position: relative;
+    border-radius: 24px;
+    background: linear-gradient(160deg, rgba(15, 33, 56, 0.6), rgba(10, 23, 41, 0.4));
+    border: 1px solid var(--line);
+    padding: 44px 36px;
+    overflow: hidden;
+  }
+  .compare-card.bad { background: linear-gradient(160deg, rgba(60, 16, 22, 0.5), rgba(20, 8, 12, 0.3)); border-color: rgba(255, 77, 92, 0.18); }
+  .compare-card.good { border-color: rgba(31,139,255,0.35); box-shadow: 0 30px 60px rgba(31,139,255,0.12); }
+  .compare-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 8px 14px; border-radius: 999px;
+    margin-bottom: 28px;
+  }
+  .compare-card.bad .compare-tag { background: rgba(255,77,92,0.12); color: #ff8a93; border: 1px solid rgba(255,77,92,0.25); }
+  .compare-card.good .compare-tag { background: rgba(31,139,255,0.14); color: var(--blue-200); border: 1px solid rgba(31,139,255,0.3); }
+  .compare-card h3 {
+    font-size: 28px;
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+  .compare-card.bad h3 { color: #ffd6d9; }
+  .compare-card .row {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: flex-start;
+  }
+  .compare-card .row:last-child { border-bottom: none; }
+  .compare-card .row svg { flex: none; margin-top: 1px; }
+  .compare-card .row b { color: var(--text-0); font-weight: 600; }
+  .compare-card .row p { color: var(--text-2); font-size: 14.5px; line-height: 1.6; }
+
+  @media (max-width: 900px) {
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============== CASES ============== */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 24px;
+  }
+  .case-card {
+    position: relative;
+    border-radius: 24px;
+    background: linear-gradient(160deg, rgba(15, 33, 56, 0.5), rgba(10, 23, 41, 0.3));
+    border: 1px solid var(--line);
+    padding: 44px 36px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    min-height: 460px;
+  }
+  .case-card.feat { background: linear-gradient(160deg, rgba(31, 88, 168, 0.35), rgba(10, 23, 41, 0.5)); border-color: rgba(110, 226, 255, 0.25); }
+  .case-card.feat::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 80% 100%, rgba(31,139,255,0.4), transparent 60%);
+    pointer-events: none;
+  }
+  .case-card .biz-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue-200);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .case-card .multiplier {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(64px, 8vw, 120px);
+    font-weight: 800;
+    background: var(--grad-blue);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    line-height: 0.95; letter-spacing: -0.05em;
+    margin-bottom: 4px;
+  }
+  .case-card .multiplier sup { font-size: 0.4em; vertical-align: 60%; margin-left: 4px; }
+  .case-card h4 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  .case-card p {
+    color: var(--text-2);
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+  .case-card .meta {
+    margin-top: auto;
+    padding-top: 28px;
+    display: flex; align-items: center; gap: 14px;
+    position: relative; z-index: 1;
+  }
+  .case-card .meta .ava {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-400), var(--blue-700));
+    display: grid; place-items: center;
+    font-family: 'Sora', sans-serif; font-weight: 700;
+    color: white; font-size: 15px;
+    flex: none;
+  }
+  .case-card .meta .name { font-size: 14px; color: var(--text-1); font-weight: 600; }
+  .case-card .meta .biz { font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
+
+  @media (max-width: 980px) { .cases-grid { grid-template-columns: 1fr; } }
+
+  /* ============== FAQ ============== */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .faq-aside {
+    position: sticky; top: 120px;
+  }
+  .faq-aside .ghost-num {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: clamp(120px, 16vw, 220px);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(110, 139, 181, 0.06));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .faq-aside .ghost-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(24px, 2.6vw, 38px);
+    color: var(--text-2);
+    margin-top: -16px;
+  }
+  .faq-aside p {
+    margin-top: 24px;
+    color: var(--text-2);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    border-radius: 18px;
+    background: rgba(15, 33, 56, 0.4);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: border-color .25s, background .25s;
+  }
+  .faq-item.open { border-color: rgba(110, 226, 255, 0.35); background: rgba(15, 33, 56, 0.7); }
+  .faq-q {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--text-0);
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: left;
+    padding: 24px 28px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    cursor: pointer;
+  }
+  .faq-q .ic {
+    flex: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display: grid; place-items: center;
+    transition: all .3s;
+    position: relative;
+  }
+  .faq-item.open .faq-q .ic { background: var(--blue-500); border-color: var(--blue-500); transform: rotate(45deg); }
+  .faq-q .ic::before, .faq-q .ic::after {
+    content: ''; position: absolute;
+    background: var(--blue-200);
+    transition: background .25s;
+  }
+  .faq-item.open .faq-q .ic::before, .faq-item.open .faq-q .ic::after { background: white; }
+  .faq-q .ic::before { width: 12px; height: 1.5px; }
+  .faq-q .ic::after { width: 1.5px; height: 12px; }
+  .faq-a { overflow: hidden; max-height: 0; transition: max-height .35s ease; }
+  .faq-a-inner { padding: 0 28px 26px; color: var(--text-2); font-size: 14.5px; line-height: 1.75; }
+  .faq-a-inner strong { color: var(--text-1); }
+
+  @media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; gap: 40px; } .faq-aside { position: static; } }
+
+  /* ============== CTA ============== */
+  .cta-band { padding: 100px 0 140px; }
+  .cta-card {
+    position: relative;
+    border-radius: 32px;
+    padding: 96px 60px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 90% 100% at 50% 0%, rgba(31,139,255,0.4), transparent 60%),
+      linear-gradient(180deg, rgba(15, 33, 56, 0.95), rgba(7, 16, 30, 0.95));
+    border: 1px solid rgba(110, 226, 255, 0.3);
+    overflow: hidden;
+  }
+  .cta-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(110, 226, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 226, 255, 0.08) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at top, #000, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at top, #000, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-card .eyebrow { margin-bottom: 28px; }
+  .cta-card h2 {
+    font-size: clamp(44px, 6vw, 92px);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    max-width: 900px;
+    margin: 0 auto 24px;
+  }
+  .cta-card h2 .serif { font-family: var(--serif); font-style: italic; font-weight: 400; }
+  .cta-card p {
+    color: var(--text-2);
+    font-size: 17px;
+    max-width: 580px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+  }
+  .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .cta-trust {
+    margin-top: 36px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* ============== FOOTER ============== */
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 80px 0 40px;
+    background: var(--bg-1);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 56px;
+    margin-bottom: 56px;
+  }
+  .footer-col h5 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--blue-200);
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .footer-col a { font-size: 14px; color: var(--text-2); transition: color .2s; }
+  .footer-col a:hover { color: var(--text-0); }
+  .footer-about p { color: var(--text-2); font-size: 14px; line-height: 1.7; max-width: 360px; margin-top: 20px; }
+  .footer-social { display: flex; gap: 10px; margin-top: 22px; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 9px;
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    color: var(--text-2);
+    transition: all .2s;
+  }
+  .footer-social a:hover { background: var(--blue-500); color: white; border-color: var(--blue-500); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 30px; border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--text-3);
+    flex-wrap: wrap; gap: 16px;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+  @media (max-width: 540px) { .footer-grid { grid-template-columns: 1fr; } }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ============== ELITE HERO BRAND ============== */
+  .elite-hero-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+    z-index: 2;
+    animation: kingFloat 6s ease-in-out infinite;
+  }
+  .elite-hero-mark {
+    width: 58%;
+    max-width: 200px;
+    filter: drop-shadow(0 20px 60px rgba(31,139,255,0.7)) drop-shadow(0 0 50px rgba(110,226,255,0.55));
+  }
+  .elite-hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .eht-elite {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(30px, 4.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    background: var(--grad-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+  }
+  .eht-sub {
+    font-family: var(--mono);
+    font-size: clamp(9px, 1.2vw, 13px);
+    letter-spacing: 0.32em;
+    color: var(--blue-200);
+    text-transform: uppercase;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="top-ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><span class="num">+13M</span> Impressões geradas</span>
+    <span><span class="num">7.4×</span> ROAS médio</span>
+    <span><span class="num">+120</span> Empresas escalando</span>
+    <span><span class="num">R$ 4M+</span> Em vendas geradas</span>
+    <span><span class="num">v2.0</span> Método Elite Performance</span>
+    <span><span class="num">+13M</span> Impressões geradas</span>
+    <span><span class="num">7.4×</span> ROAS médio</span>
+    <span><span class="num">+120</span> Empresas escalando</span>
+    <span><span class="num">R$ 4M+</span> Em vendas geradas</span>
+    <span><span class="num">v2.0</span> Método Elite Performance</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav">
+    <a href="#" class="logo" aria-label="Elite Company Digital">
+      <span class="logo-mark">
+        <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+          <defs>
+            <linearGradient id="navMarkGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#6ee2ff"/>
+              <stop offset="60%" stop-color="#1f8bff"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0.9"/>
+            </linearGradient>
+          </defs>
+          <rect x="14" y="14" width="14" height="72" rx="4" fill="url(#navMarkGrad)"/>
+          <rect x="14" y="14" width="72" height="14" rx="4" fill="url(#navMarkGrad)"/>
+          <rect x="14" y="43" width="52" height="14" rx="4" fill="url(#navMarkGrad)"/>
+          <rect x="14" y="72" width="72" height="14" rx="4" fill="url(#navMarkGrad)"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <span class="l1">ELITE<span class="v">2.0</span></span>
+        <span class="l2">COMPANY • DIGITAL</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#metodo">Método</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Processo</a>
+      <a href="#cases">Cases</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+quero+uma+diagn%C3%B3stica+gratuita+com+a+Elite+Company+Digital%21" target="_blank" rel="noopener" class="btn btn-primary">
+        Falar no WhatsApp
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-checker"></div>
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+
+  <div class="container">
+    <div class="hero-meta">
+      <div class="left">
+        <span>[ Edition 2.0 / Performance ]</span>
+        <span>São Paulo • Brasil</span>
+      </div>
+      <div class="live"><span class="ld"></span>Operando agora — 04 maio 2026</div>
+    </div>
+
+    <div class="hero-head">
+      <h1>
+        <span class="row">Onde estratégia</span>
+        <span class="row right"><span class="serif">vira</span> <span class="accent">faturamento</span>.</span>
+      </h1>
+    </div>
+
+    <div class="hero-body">
+      <div class="hero-sub">
+        <span class="eyebrow"><span class="dot"></span>Agência de Performance</span>
+        <p style="margin-top: 22px;">
+          A <strong>Elite Company Digital</strong> não vende posts — vende crescimento. Aplicamos o método <strong>Elite Performance</strong> para transformar tráfego em <strong>vendas previsíveis</strong>.
+        </p>
+      </div>
+
+      <div class="hero-scene" aria-hidden="true">
+        <div class="ring"></div>
+        <div class="ring r2"></div>
+        <div class="king-stage">
+          <div class="elite-hero-brand">
+            <svg class="elite-hero-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="heroMarkGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#6ee2ff"/>
+                  <stop offset="35%" stop-color="#2cc8ff"/>
+                  <stop offset="70%" stop-color="#1f8bff"/>
+                  <stop offset="100%" stop-color="#0a52b8"/>
+                </linearGradient>
+                <filter id="heroMarkGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="5" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <rect x="14" y="14" width="14" height="72" rx="4" fill="url(#heroMarkGrad)" filter="url(#heroMarkGlow)"/>
+              <rect x="14" y="14" width="72" height="14" rx="4" fill="url(#heroMarkGrad)" filter="url(#heroMarkGlow)"/>
+              <rect x="14" y="43" width="52" height="14" rx="4" fill="url(#heroMarkGrad)" filter="url(#heroMarkGlow)"/>
+              <rect x="14" y="72" width="72" height="14" rx="4" fill="url(#heroMarkGrad)" filter="url(#heroMarkGlow)"/>
+            </svg>
+            <div class="elite-hero-text">
+              <span class="eht-elite">ELITE</span>
+              <span class="eht-sub">COMPANY DIGITAL</span>
+            </div>
+          </div>
+        </div>
+        <div class="floating-card fc-1">
+          <div class="fc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M3 17l6-6 4 4 8-8M14 7h7v7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="fc-text"><span class="fc-label">Conversão</span><span class="fc-value green">+312%</span></div>
+        </div>
+        <div class="floating-card fc-2">
+          <div class="fc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 2v20M5 9l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="fc-text"><span class="fc-label">ROAS</span><span class="fc-value">7.4×</span></div>
+        </div>
+        <div class="floating-card fc-3">
+          <div class="fc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+          <div class="fc-text"><span class="fc-label">Lead qualificado</span><span class="fc-value">há 2 min</span></div>
+        </div>
+      </div>
+
+      <div class="hero-cta-stack">
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+quero+multiplicar+minhas+vendas+com+a+Elite+Company+Digital%21" target="_blank" rel="noopener" class="btn btn-primary btn-xl">
+          Falar com a Elite no WhatsApp
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div style="display:flex; align-items:center; gap:10px; padding-top: 8px; font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; justify-content: center;">
+          <span style="color: var(--gold);">★★★★★</span>
+          <span>4.9/5 • +120 empresas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS MARQUEE -->
+<section class="clients-band" aria-label="Clientes">
+  <div class="clients-track">
+    <div class="client-logo">NORTHSTAR<span class="dot"></span><span class="it">studios</span></div>
+    <div class="client-logo">VANGUARD<span class="it">.co</span></div>
+    <div class="client-logo">PRIMA<span class="dot"></span>AGRO</div>
+    <div class="client-logo"><span class="it">Atelier</span> ROSSI</div>
+    <div class="client-logo">NUTRIPRO<span class="dot"></span>STORE</div>
+    <div class="client-logo">COSTA <span class="it">Imóveis</span></div>
+    <div class="client-logo">STUDIO MARINA</div>
+    <div class="client-logo">HORIZON<span class="dot"></span>FIT</div>
+    <div class="client-logo">NORTHSTAR<span class="dot"></span><span class="it">studios</span></div>
+    <div class="client-logo">VANGUARD<span class="it">.co</span></div>
+    <div class="client-logo">PRIMA<span class="dot"></span>AGRO</div>
+    <div class="client-logo"><span class="it">Atelier</span> ROSSI</div>
+    <div class="client-logo">NUTRIPRO<span class="dot"></span>STORE</div>
+    <div class="client-logo">COSTA <span class="it">Imóveis</span></div>
+    <div class="client-logo">STUDIO MARINA</div>
+    <div class="client-logo">HORIZON<span class="dot"></span>FIT</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num">13M+</div><div class="stat-label">Impressões geradas</div></div>
+      <div class="stat"><div class="stat-num">120+</div><div class="stat-label">Empresas atendidas</div></div>
+      <div class="stat"><div class="stat-num">7,4×</div><div class="stat-label">ROAS médio</div></div>
+      <div class="stat"><div class="stat-num">4 anos</div><div class="stat-label">De expertise</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT BENTO -->
+<section class="section-pad" id="sobre">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="sh-left">
+        <span class="sh-num">01 — SOBRE NÓS</span>
+        <h2>Uma agência feita para <span class="serif grad-text">vender</span>, não para postar.</h2>
+      </div>
+      <div class="sh-right">Liderada por <strong>Daniel Brito</strong>, com 4 anos de experiência e mais de 13 milhões de impressões geradas para clientes em todo o Brasil.</div>
+    </div>
+
+    <div class="bento">
+      <div class="bento-card magic b-headline reveal">
+        <span class="bento-tag">Manifesto</span>
+        <p class="b-headline-quote" style="margin-top: 24px;">
+          Cada centavo investido vira <span class="grad-text">venda</span>, lead qualificado ou crescimento de marca. Sem firulas. Sem vaidade. <span class="serif-it">Apenas resultado.</span>
+        </p>
+      </div>
+
+      <div class="bento-card magic b-stat reveal">
+        <div>
+          <span class="bento-tag">Vendas geradas</span>
+          <div class="bento-num" style="margin-top: 8px;">R$ 4M+</div>
+        </div>
+        <p>Em receita rastreada para clientes ativos nos últimos 24 meses.</p>
+      </div>
+
+      <div class="bento-card magic b-mini reveal">
+        <div class="icon-sq">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6ee2ff" stroke-width="2"><path d="M12 2L2 20h20L12 2z"/><path d="M12 9v4M12 16h.01" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Foco em vendas</h3>
+        <p>KPIs comerciais no centro de cada decisão de campanha.</p>
+      </div>
+
+      <div class="bento-card magic b-mini reveal">
+        <div class="icon-sq">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6ee2ff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Resposta em horas</h3>
+        <p>Atendimento direto com estrategistas — sem filas, sem ruído.</p>
+      </div>
+
+      <div class="bento-card magic b-mini reveal">
+        <div class="icon-sq">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6ee2ff" stroke-width="2"><path d="M3 17l6-6 4 4 8-8M14 7h7v7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Otimização semanal</h3>
+        <p>Testes A/B, ajustes de criativos e copy a cada ciclo.</p>
+      </div>
+
+      <div class="bento-card magic b-half reveal">
+        <span class="bento-tag">Especialidades</span>
+        <h3 style="margin-top: 16px;">Tráfego, copy, design, funis e branding — sob um único teto.</h3>
+        <p>Equipe sênior multidisciplinar trabalhando integrada para que sua marca cresça em todas as frentes — sem o atrito de gerenciar 4 fornecedores diferentes.</p>
+      </div>
+
+      <div class="bento-card magic b-half reveal" style="overflow: hidden;">
+        <span class="bento-tag">Liderança</span>
+        <h3 style="margin-top: 16px;">Daniel Brito <span class="serif-it" style="color: var(--blue-200); font-size: 0.7em;">— fundador</span></h3>
+        <p>+4 anos otimizando campanhas para pequenas, médias e grandes empresas no Brasil. Reconhecido por entregar resultados onde outras agências falharam.</p>
+        <svg class="bento-king-tile" viewBox="0 0 200 320" fill="none">
+          <path d="M70 60 L100 30 L130 60 L120 90 L80 90 Z M68 158 Q56 200 62 240 L138 240 Q144 200 132 158 Z M50 245 L48 270 L152 270 L150 245 Z" fill="#1f8bff" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="section-pad" id="metodo">
+  <div class="method-bg"></div>
+  <div class="container">
+    <div class="method-display reveal">
+      <span class="method-tag">// Nossa metodologia</span>
+      <h2 class="method-bigtitle">MÉTODO</h2>
+      <div class="method-subtitle">Elite Performance.</div>
+      <p class="method-blurb">
+        Uma metodologia comprovada para transformar marketing digital em <strong>aumento de faturamento mensurável</strong>. Cada real investido tem retorno rastreável — com foco em maximizar leads, vendas e visibilidade da sua marca.
+      </p>
+      <div class="method-pill-row">
+        <span class="method-pill"><span class="d"></span>Diagnose</span>
+        <span class="method-pill"><span class="d"></span>Estratégia</span>
+        <span class="method-pill"><span class="d"></span>Execução</span>
+        <span class="method-pill"><span class="d"></span>Otimização</span>
+        <span class="method-pill"><span class="d"></span>Escala</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (interactive list) -->
+<section class="section-pad" id="servicos" style="background: linear-gradient(180deg, var(--bg-0), var(--bg-1) 50%, var(--bg-0));">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="sh-left">
+        <span class="sh-num">02 — SERVIÇOS</span>
+        <h2>Tudo que sua marca precisa para <span class="serif grad-text">dominar</span> o digital.</h2>
+      </div>
+      <div class="sh-right">Soluções integradas que conversam entre si. Vendas não acontecem em silos.</div>
+    </div>
+
+    <div class="svc-list reveal">
+      <a href="#" class="svc-row" data-svc>
+        <span class="svc-num">/01</span>
+        <span class="svc-title"><span class="grad-text">Posicionamento</span> nas buscas do Google</span>
+        <span class="svc-tags"><span>Google Ads</span><span>SEO</span></span>
+        <span class="svc-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="#" class="svc-row" data-svc>
+        <span class="svc-num">/02</span>
+        <span class="svc-title">Meta Ads <span class="it">Facebook & Instagram</span></span>
+        <span class="svc-tags"><span>Tráfego</span><span>Remarketing</span></span>
+        <span class="svc-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="#" class="svc-row" data-svc>
+        <span class="svc-num">/03</span>
+        <span class="svc-title"><span class="grad-text">Design</span> & Web, Social Media, Branding</span>
+        <span class="svc-tags"><span>Identidade</span><span>UI</span></span>
+        <span class="svc-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="#" class="svc-row" data-svc>
+        <span class="svc-num">/04</span>
+        <span class="svc-title"><span class="grad-text">Copywriting</span> persuasivo & CRO</span>
+        <span class="svc-tags"><span>Landing</span><span>Anúncios</span></span>
+        <span class="svc-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="#" class="svc-row" data-svc>
+        <span class="svc-num">/05</span>
+        <span class="svc-title">Funis de vendas <span class="it">& automação</span></span>
+        <span class="svc-tags"><span>E-mail</span><span>WhatsApp</span></span>
+        <span class="svc-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="#" class="svc-row" data-svc>
+        <span class="svc-num">/06</span>
+        <span class="svc-title"><span class="grad-text">Analytics</span> e relatórios estratégicos</span>
+        <span class="svc-tags"><span>Dashboards</span><span>BI</span></span>
+        <span class="svc-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-pad" id="processo">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="sh-left">
+        <span class="sh-num">03 — PROCESSO</span>
+        <h2>Como aplicamos o método <span class="serif grad-text">Elite Performance</span>.</h2>
+      </div>
+      <div class="sh-right">Cinco etapas, executadas em ciclos. Diagnóstico no dia 1, primeiros resultados em 15-30 dias, escala em 60-90 dias.</div>
+    </div>
+
+    <div class="steps-frame reveal">
+      <div class="orbit o2"></div>
+      <div class="orbit o1"></div>
+      <svg class="center-king" viewBox="0 0 200 320" fill="none">
+        <defs>
+          <linearGradient id="kingGrad3" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1a3a6b"/>
+            <stop offset="100%" stop-color="#020815"/>
+          </linearGradient>
+        </defs>
+        <rect x="95" y="14" width="10" height="36" fill="url(#kingGrad3)"/>
+        <rect x="83" y="22" width="34" height="10" fill="url(#kingGrad3)"/>
+        <path d="M70 60 L100 30 L130 60 L120 90 L80 90 Z" fill="url(#kingGrad3)"/>
+        <ellipse cx="100" cy="60" rx="14" ry="10" fill="url(#kingGrad3)"/>
+        <path d="M70 90 Q60 100 65 110 L135 110 Q140 100 130 90 Z" fill="url(#kingGrad3)"/>
+        <path d="M75 110 L78 150 L122 150 L125 110 Z" fill="url(#kingGrad3)"/>
+        <ellipse cx="100" cy="155" rx="32" ry="8" fill="url(#kingGrad3)"/>
+        <path d="M68 158 Q56 200 62 240 L138 240 Q144 200 132 158 Z" fill="url(#kingGrad3)"/>
+        <ellipse cx="100" cy="245" rx="50" ry="12" fill="url(#kingGrad3)"/>
+        <path d="M50 245 L48 270 L152 270 L150 245 Z" fill="url(#kingGrad3)"/>
+        <ellipse cx="100" cy="272" rx="58" ry="14" fill="url(#kingGrad3)"/>
+      </svg>
+
+      <div class="step-node s1">
+        <div class="sn-num">// 01 / Diagnose</div>
+        <h4>Análise completa do negócio</h4>
+        <p>Mergulhamos em posicionamento, concorrência, persona e jornada. Identificamos onde dinheiro está sendo perdido.</p>
+      </div>
+      <div class="step-node s2">
+        <div class="sn-num">// 02 / Estratégia</div>
+        <h4>Plano sob medida</h4>
+        <p>Estratégia personalizada alinhando tráfego, copy e design para maximizar vendas e engajamento.</p>
+      </div>
+      <div class="step-node s3">
+        <div class="sn-num">// 03 / Execução</div>
+        <h4>Implementação com performance</h4>
+        <p>Execução de cada etapa com as melhores ferramentas e práticas — foco em resultados rápidos.</p>
+      </div>
+      <div class="step-node s4">
+        <div class="sn-num">// 04 / Otimização</div>
+        <h4>Otimizações contínuas</h4>
+        <p>Monitoramento diário, ajustes em campanhas e otimização para manter a empresa à frente.</p>
+      </div>
+      <div class="step-node s5">
+        <div class="sn-num">// 05 / Transparência</div>
+        <h4>Relatórios e escala</h4>
+        <p>Relatórios detalhados a cada 30 dias para acompanhar crescimento sem surpresas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="section-pad" style="background: linear-gradient(180deg, var(--bg-0), var(--bg-1) 50%, var(--bg-0));">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="sh-left">
+        <span class="sh-num">04 — POR QUE A ELITE</span>
+        <h2>O abismo entre <span class="serif">marketing</span> e <span class="grad-text">resultado</span>.</h2>
+      </div>
+      <div class="sh-right">O que separa quem entrega relatórios de quem entrega vendas. Honestidade brutal sobre o que importa.</div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card bad reveal">
+        <div class="compare-tag">× Agência tradicional</div>
+        <h3>Postagens, prazos<br/>e <span style="color: #ff8a93;" class="serif-it">expectativas</span> frustradas.</h3>
+        <div class="row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ff4d5c" opacity="0.18"/><path d="M9 9l6 6M15 9l-6 6" stroke="#ff4d5c" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p><b>Abordagem genérica</b>, sem personalização real para o seu negócio ou setor.</p>
+        </div>
+        <div class="row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ff4d5c" opacity="0.18"/><path d="M9 9l6 6M15 9l-6 6" stroke="#ff4d5c" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p>Execução de campanhas com <b>pouco foco</b> em conversão ou resultados de vendas.</p>
+        </div>
+        <div class="row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ff4d5c" opacity="0.18"/><path d="M9 9l6 6M15 9l-6 6" stroke="#ff4d5c" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p>Relatórios <b>confusos</b> e falta de transparência sobre o que está sendo feito.</p>
+        </div>
+        <div class="row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ff4d5c" opacity="0.18"/><path d="M9 9l6 6M15 9l-6 6" stroke="#ff4d5c" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p>Atendimento <b>terceirizado</b> e tempo de resposta lento para ajustes urgentes.</p>
+        </div>
+      </div>
+
+      <div class="compare-card good reveal">
+        <div class="compare-tag"><span style="color: var(--cyan-300);">●</span> Elite Company Digital 2.0</div>
+        <h3>Vendas, transparência<br/>e <span class="grad-text serif-it">previsibilidade</span> real.</h3>
+        <div class="row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f8bff" opacity="0.22"/><path d="M8 12l3 3 5-6" stroke="#6ee2ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><b>Método Elite Performance:</b> foco total em aumentar vendas e otimizar resultados mensuráveis.</p>
+        </div>
+        <div class="row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f8bff" opacity="0.22"/><path d="M8 12l3 3 5-6" stroke="#6ee2ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><b>Estratégias personalizadas:</b> cada campanha é feita sob medida para suas necessidades específicas.</p>
+        </div>
+        <div class="row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f8bff" opacity="0.22"/><path d="M8 12l3 3 5-6" stroke="#6ee2ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><b>Relatórios transparentes:</b> você saberá exatamente onde e como seus investimentos estão sendo aplicados.</p>
+        </div>
+        <div class="row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1f8bff" opacity="0.22"/><path d="M8 12l3 3 5-6" stroke="#6ee2ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><b>Atendimento direto:</b> contato direto com estrategistas e ajustes em horas, não em semanas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="section-pad" id="cases">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="sh-left">
+        <span class="sh-num">05 — RESULTADOS</span>
+        <h2>Empresas que <span class="serif grad-text">multiplicaram</span> com a Elite.</h2>
+      </div>
+      <div class="sh-right">Números reais de clientes que aplicaram o método Elite Performance no último ano.</div>
+    </div>
+
+    <div class="cases-grid">
+      <div class="case-card feat reveal">
+        <span class="biz-tag">/ Moda • E-commerce</span>
+        <div class="multiplier">7,4<sup>×</sup></div>
+        <h4>Crescimento de ROAS em 90 dias</h4>
+        <p>Loja de moda regional saiu de R$ 28 mil/mês para R$ 207 mil/mês em vendas online — sem aumentar o investimento em mídia.</p>
+        <div class="meta">
+          <div class="ava">MA</div>
+          <div>
+            <div class="name">Marina Almeida</div>
+            <div class="biz">CEO • Studio Marina</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <span class="biz-tag">/ Imobiliário</span>
+        <div class="multiplier">+312<sup>%</sup></div>
+        <h4>Aumento de leads qualificados</h4>
+        <p>De 18 para 74 leads/semana com funil otimizado e copy persuasivo.</p>
+        <div class="meta">
+          <div class="ava">RC</div>
+          <div>
+            <div class="name">Ricardo Costa</div>
+            <div class="biz">Diretor • Costa Imóveis</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <span class="biz-tag">/ Saúde • Suplementos</span>
+        <div class="multiplier">R$ 1,2<sup>M</sup></div>
+        <h4>Em vendas em 1 trimestre</h4>
+        <p>E-commerce de suplementos faturou em 90 dias mais que no ano anterior inteiro.</p>
+        <div class="meta">
+          <div class="ava">JP</div>
+          <div>
+            <div class="name">João Pedro</div>
+            <div class="biz">Sócio • NutriPro Store</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" id="faq" style="background: linear-gradient(180deg, var(--bg-0), var(--bg-1) 50%, var(--bg-0));">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-aside reveal">
+        <span class="sh-num">06 — DÚVIDAS</span>
+        <div class="ghost-num" style="margin-top: 24px;">FAQ</div>
+        <div class="ghost-sub">Perguntas frequentes</div>
+        <p>Não achou sua dúvida? Fale direto com nosso time — atendemos em horas, não em semanas.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item open reveal">
+          <button class="faq-q">Como o Método Elite Performance pode ajudar minha empresa? <span class="ic"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            O método é focado em gerar resultados rápidos e eficazes, aumentando seu faturamento e captando leads qualificados. Combinamos análise de dados, estratégia personalizada e execução de alta performance — testando, otimizando e escalando o que funciona.
+          </div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">Quanto tempo demora para ver resultados? <span class="ic"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Os primeiros sinais aparecem entre <strong>15 e 30 dias</strong> (CTR, leads, primeiras conversões). Resultados consistentes de receita e ROAS estável geralmente acontecem entre <strong>60 e 90 dias</strong>, conforme as campanhas vão sendo otimizadas com dados reais.
+          </div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">Qual é o investimento necessário? <span class="ic"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Trabalhamos com pacotes flexíveis adaptados ao porte e estágio de cada empresa. Após uma <strong>diagnose gratuita</strong>, apresentamos uma proposta sob medida com investimento em fee + verba de mídia ideal para o seu objetivo.
+          </div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">Qual a diferença entre a Elite e outras agências? <span class="ic"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Foco em <strong>resultado de venda</strong>, não em volume de postagens. Estratégias personalizadas, atendimento direto com estrategistas, transparência total nos relatórios e o método Elite Performance — testado em mais de 120 empresas.
+          </div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">Como vocês garantem os resultados? <span class="ic"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Garantimos o <strong>processo</strong>: aplicação rigorosa do método, otimização semanal, transparência total. O que entregamos é previsibilidade — KPIs claros, marcos de revisão a cada 30 dias e relatórios que mostram exatamente o que está funcionando.
+          </div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">Vocês atendem qualquer segmento? <span class="ic"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Atendemos a maioria dos segmentos B2C e B2B. Antes de iniciar, fazemos uma análise de fit — só assumimos projetos onde temos confiança real de entregar resultados. Se não for fit, indicamos parceiros.
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="contato">
+  <div class="container">
+    <div class="cta-card reveal">
+      <span class="eyebrow"><span class="dot"></span>Próximo movimento</span>
+      <h2>Pronto para <span class="serif grad-text">multiplicar</span><br/>seu faturamento?</h2>
+      <p>Agende uma diagnose gratuita de 30 minutos. Vamos analisar seu negócio, mostrar oportunidades reais e desenhar um plano sob medida — sem compromisso.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+quero+minha+diagn%C3%B3stica+gratuita+com+a+Elite+Company+Digital%21" target="_blank" rel="noopener" class="btn btn-primary">
+          Falar com a Elite no WhatsApp
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="cta-trust">[ resposta em até 24h • sem compromisso • 4.9/5 com +120 empresas ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="#" class="logo">
+          <span class="logo-mark">
+            <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+              <defs>
+                <linearGradient id="ftMarkGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#6ee2ff"/>
+                  <stop offset="60%" stop-color="#1f8bff"/>
+                  <stop offset="100%" stop-color="#fff" stop-opacity="0.9"/>
+                </linearGradient>
+              </defs>
+              <rect x="14" y="14" width="14" height="72" rx="4" fill="url(#ftMarkGrad)"/>
+              <rect x="14" y="14" width="72" height="14" rx="4" fill="url(#ftMarkGrad)"/>
+              <rect x="14" y="43" width="52" height="14" rx="4" fill="url(#ftMarkGrad)"/>
+              <rect x="14" y="72" width="72" height="14" rx="4" fill="url(#ftMarkGrad)"/>
+            </svg>
+          </span>
+          <span class="logo-text">
+            <span class="l1">ELITE<span class="v">2.0</span></span>
+            <span class="l2">COMPANY • DIGITAL</span>
+          </span>
+        </a>
+        <p>Agência de performance digital especializada em transformar marketing em vendas reais. Método Elite Performance, edition 2.0.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 10v7M11 13a3 3 0 016 0v4" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-3.5-7.1L21 4l-1 3.5A9 9 0 0121 12zM8 10c0 4 4 7 7 7l1-2-3-1-1 1c-1 0-3-2-3-3l1-1-1-3-2 1z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="#sobre">Sobre nós</a></li>
+          <li><a href="#metodo">Método</a></li>
+          <li><a href="#cases">Resultados</a></li>
+          <li><a href="#">Carreiras</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Serviços</h5>
+        <ul>
+          <li><a href="#servicos">Tráfego pago</a></li>
+          <li><a href="#servicos">Social media</a></li>
+          <li><a href="#servicos">Design & web</a></li>
+          <li><a href="#servicos">Funis & CRO</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <ul>
+          <li><a href="mailto:contato@elitecompany.digital">contato@elitecompany.digital</a></li>
+          <li><a href="https://wa.me/5511999999999" target="_blank" rel="noopener">+55 (11) 9 9999-9999</a></li>
+          <li><a href="#">São Paulo, SP — Brasil</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ELITE COMPANY DIGITAL · v2.0</span>
+      <span><a href="#">Privacidade</a> · <a href="#">Termos</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky header
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => {
+    if (window.scrollY > 12) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const ans = item.querySelector('.faq-a');
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(it => {
+        it.classList.remove('open');
+        it.querySelector('.faq-a').style.maxHeight = '0px';
+      });
+      if (!open) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+  const def = document.querySelector('.faq-item.open .faq-a');
+  if (def) def.style.maxHeight = def.scrollHeight + 'px';
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Magic borders on bento cards
+  document.querySelectorAll('.bento-card.magic').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // Service rows: light follows mouse
+  document.querySelectorAll('.svc-row').forEach(row => {
+    row.addEventListener('mousemove', (e) => {
+      const r = row.getBoundingClientRect();
+      row.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    });
+  });
+</script>
+
+</body>
+</html>
