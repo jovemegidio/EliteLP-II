@@ -689,8 +689,12 @@
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 200px;
+    height: 260px;
+    object-fit: cover;
+    object-position: center top;
     z-index: 2;
-    filter: drop-shadow(0 30px 60px rgba(31,139,255,0.5));
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 20px 50px rgba(200,150,0,0.6)) drop-shadow(0 0 30px rgba(31,139,255,0.3)) brightness(1.15) contrast(1.1);
   }
   .steps-frame .orbit {
     position: absolute;
@@ -1353,25 +1357,7 @@
     <div class="steps-frame reveal">
       <div class="orbit o2"></div>
       <div class="orbit o1"></div>
-      <svg class="center-king" viewBox="0 0 200 320" fill="none">
-        <defs>
-          <linearGradient id="kingGrad3" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#1a3a6b"/>
-            <stop offset="100%" stop-color="#020815"/>
-          </linearGradient>
-        </defs>
-        <rect x="95" y="14" width="10" height="36" fill="url(#kingGrad3)"/>
-        <rect x="83" y="22" width="34" height="10" fill="url(#kingGrad3)"/>
-        <path d="M70 60 L100 30 L130 60 L120 90 L80 90 Z" fill="url(#kingGrad3)"/>
-        <ellipse cx="100" cy="60" rx="14" ry="10" fill="url(#kingGrad3)"/>
-        <path d="M70 90 Q60 100 65 110 L135 110 Q140 100 130 90 Z" fill="url(#kingGrad3)"/>
-        <path d="M75 110 L78 150 L122 150 L125 110 Z" fill="url(#kingGrad3)"/>
-        <ellipse cx="100" cy="155" rx="32" ry="8" fill="url(#kingGrad3)"/>
-        <path d="M68 158 Q56 200 62 240 L138 240 Q144 200 132 158 Z" fill="url(#kingGrad3)"/>
-        <ellipse cx="100" cy="245" rx="50" ry="12" fill="url(#kingGrad3)"/>
-        <path d="M50 245 L48 270 L152 270 L150 245 Z" fill="url(#kingGrad3)"/>
-        <ellipse cx="100" cy="272" rx="58" ry="14" fill="url(#kingGrad3)"/>
-      </svg>
+      <img class="center-king" src="uploads/chess-king-photo.jpg" alt="Rei de xadrez dourado" aria-hidden="true"/>
 
       <div class="step-node s1">
         <div class="sn-num">// 01 / Diagnose</div>
